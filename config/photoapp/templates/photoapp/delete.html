@@ -1,0 +1,34 @@
+{% extends 'base.html' %} 
+
+{% block body %}
+<div class="form-group mx-auto">
+  <h2 class="text-center">
+    Zamierzasz <span class="text-danger">usunac</span>: plik o nazwie"<i
+      >{{ photo }}</i
+    >
+    "
+  </h2>
+  <p class="text-center">Czy jestes pewny, ze chcesz wykonac te operacje ?</p>
+  <div class="form-group">
+    <form
+      action=""
+      method="post"
+      class="d-flex flex-column align-items-center justify-content-center"
+    >
+      {% csrf_token %}
+      <div class="row">
+        <div class="col">
+          <a href="{% url 'photo:detail' photo.id %}" class="btn btn-primary"
+            >Cancel</a
+          >
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-danger">Usun</button>
+        </div>
+      </div>
+      <p>Operacja jest nieodwracalna</p>
+    </form>
+  </div>
+</div>
+
+{% endblock body %}
